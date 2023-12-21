@@ -1,0 +1,48 @@
+<!-- shortener/templates/shortener/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>url shortener</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        /* Apply styles to the marquee element */
+        marquee {
+            border: 1px solid rgb(166, 53, 53);  /* Black border */
+            padding: 20px;            /* Padding for text inside the marquee */
+            background-color: #1a0202; /* Light gray background color */
+            color: rgb(189, 166, 166); 
+            font-size: 20px;              /* Red text color */
+            display: inline-block;    /* Make it an inline block to respect border and padding */
+            white-space: nowrap;      /* Prevent text from wrapping to the next line */
+        }
+        form{
+            padding: 50px;
+        }
+        button{
+            border-radius: 9px;
+            background: #2c0a0a;
+             color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- marqueue -->
+    <marquee behavior="scroll" direction="left">URL Shortener
+</marquee>
+{% block starts%}
+
+
+
+<form method="post" action="{% url 'shorten_url' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Shorten URL</button>
+</form>
+
+
+{% endblock %}
+</body>
+</html>
